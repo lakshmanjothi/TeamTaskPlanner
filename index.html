@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Task Planner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+
+<body>
+      <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-md bg-primary navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="index.html"><i class="fa fa-tasks fa-1x" aria-hidden="true"></i> Task Planner</a>
+        <div class="collapse navbar-collapse justify-content-end ml-auto" id="nav">
+          <button type="button" class="btn bg-white text-dark m-1" data-toggle="modal" data-target="#formTask">Add Task</button>
+        </div>          
+    </nav> 
+    <div class="container">
+        <div class="modal fade" id="formTask" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalName">New Task</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="needs-validation" novalidate>
+                    <!-- Task Name -->
+                    <div class="form-group">
+                        <label for="#name">Task Name</label>
+                        <input type="text" class="form-control" id="name"/>
+                        <span id="errorMsg1"></span>
+                    </div>
+                    <!-- Task details -->
+                    <div class="form-group">
+                          <label for="#details">Task Details</label>
+                          <textarea class="form-control" id="details" rows="3"></textarea>
+                          <!-- <span id="errormsg"></span> -->
+                          <span id="errorMsg2"></span>
+                      </div>
+                    <!-- Assignee select -->
+                    <div class="form-group">
+                          <label for="#assignee">Assignee</label>
+                          <select class="form-control" id="assignee">
+                              <option value="Kirija" selected>Kirija</option>
+                              <option value="Lakshman">Lakshman</option>
+                          </select>
+                    </div>
+                    <!-- Due Date with the calendar -->
+                  <div class="form-group">
+                        <label for="#dueDate">Due Date</label>
+                        <input type="date" class="form-control" id="dueDate"/>
+                        <span id="errorMsg3"></span>
+                  </div>
+                  <!-- Status of the Task -->
+                  <div class="form-group">
+                      <label for="#status">Status</label>
+                      <select class="form-control" id="status">
+                            <option value="To Do" selected>To Do</option>
+                            <option value="In progress">In progress</option>
+                            <option value="review">Review</option>
+                            <option value="Done">Done</option>
+                      </select>
+                  </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submit" data-dismiss="modal">Save</button>
+                    <input type="hidden" id="contIdEdit">
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      <!-- card display -->
+      <div class="container mt-4">
+        <div class="row" id="example">
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="task.js"></script>
+</body>
+
+</html>
