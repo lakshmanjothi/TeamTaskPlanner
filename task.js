@@ -1,3 +1,8 @@
+//show todays date
+const dateElement = document.getElementById("date");
+const options = {weekday : "long", month:"short", day:"numeric"};
+const today = new Date();
+dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 //declaration for form, three inpue fields,table display,submit button for store this item and hidden field for id - check for the class and id in the HTML
 
 //console.log used for value verfication
