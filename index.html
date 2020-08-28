@@ -11,11 +11,23 @@
 
 <body>
       <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-md bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="index.html"><i class="fa fa-tasks fa-1x" aria-hidden="true"></i> Task Planner</a>
-        <div class="collapse navbar-collapse justify-content-end ml-auto" id="nav">
+        <div class="collapse navbar-collapse justify-content-end ml-auto" id="nav">         
           <div id="date" class="text-white m-4"></div>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Status
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button" id="alldisplay">All Tasks</button>
+              <button class="dropdown-item" type="button" id="todo">To Do</button>
+              <button class="dropdown-item" type="button" id="progress">In progress</button>
+              <button class="dropdown-item" type="button" id="review">Review</button>
+              <button class="dropdown-item" type="button" id="done">Done</button>
+            </div>
+          </div>
           <button type="button" class="btn bg-white text-dark m-1" data-toggle="modal" data-target="#formTask">Add Task</button>
         </div>          
     </nav> 
