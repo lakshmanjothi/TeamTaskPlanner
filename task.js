@@ -16,15 +16,16 @@ const errormsg=document.getElementById("errormsg");
 const errorMsg1 = document.querySelector("#errorMsg1");
 const errorMsg2 = document.querySelector("#errorMsg2");
 const errorMsg3 = document.querySelector("#errorMsg3");
+const dateElement = document.getElementById("#date");
 const todo=document.querySelector("#todo");
 const progress=document.querySelector("#progress");
 const review=document.querySelector("#review");
 const done=document.querySelector("#done");
 const allDisplay=document.querySelector("#alldisplay");
-const dateElement = document.getElementById("date");
-const options = {weekday : "long", month:"short", day:"numeric"};
-const today = new Date();
-dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
+// const options = {weekday : "long", month:"short", day:"numeric"};
+// const today = new Date();
+// dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 //declaration for form, three inpue fields,table display,submit button for store this item and hidden field for id - check for the class and id in the HTML
 
 //console.log used for value verfication
@@ -33,7 +34,7 @@ dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 
 const newTask=new Taskmanager();
 newTask.showTasks();
-
+// window.load=function(){
 submit.addEventListener("click",(e)=>{
     e.preventDefault();
     //update id checking if new id display it in the new row
@@ -61,6 +62,7 @@ submit.addEventListener("click",(e)=>{
 });
 
 name.addEventListener("input", function(event) {
+    e.preventDefault();
     if (event.target.value && event.target.value.length <= 8) {
       errorMsg1.innerHTML = "Mandatory must enter 8 characters of length";
       errorMsg1.style.color = "red";
@@ -71,6 +73,7 @@ name.addEventListener("input", function(event) {
     }
   });
   details.addEventListener("input", function(event) {
+    e.preventDefault();
     if (event.target.value && event.target.value.length <= 15) {
       errorMsg2.innerHTML = "Mandatory must enter 15 characters of length";
       errorMsg2.style.color = "red";
@@ -82,6 +85,7 @@ name.addEventListener("input", function(event) {
     }
   });
   dueDate.addEventListener("change", function(event) {
+    e.preventDefault();
     if (event.target.value == 0) {
       errorMsg3.innerHTML = "Please select a valid date."
       errorMsg3.style.color = "red";
@@ -104,7 +108,7 @@ tableBody.addEventListener("click",(e)=>{
         let id=e.target.getAttribute("data-id");
         newTask.deleteTask(id);
         e.target.parentElement.parentElement.parentElement.remove();
-    console.log("delete");
+        console.log("delete");
     }
 
     else if(e.target.classList.contains("edit")){
@@ -149,3 +153,4 @@ done.addEventListener("click",(e)=>{
     e.preventDefault();
     newTask.displayFilter("Done");
 });
+// }

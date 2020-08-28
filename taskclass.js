@@ -7,5 +7,5 @@ export default class Task{
         this.assignee=assignee;
         this.dueDate=dueDate;
         this.status=status;
-    }
+    }  
 }
