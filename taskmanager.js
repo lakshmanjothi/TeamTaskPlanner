@@ -4,16 +4,14 @@ export default class Taskmanager extends Task{
         super(id,name,details,assignee,dueDate,status);
     }
     //show and store task works together like display and store in the local storage
-    showData(id,name,details,assignee,dueDate,status){
+    addTask(id,name,details,assignee,dueDate,status){
         this.id=id;
         this.name=name;
         this.details=details;
         this.assignee=assignee;
         this.dueDate=dueDate;
         this.status=status;
-        console.log(this.status);
-        this.showHtml(this.id,this.name,this.details,this.assignee,this.dueDate,this.status);
-        console.log(this.id);
+        this.displayHtml(this.id,this.name,this.details,this.assignee,this.dueDate,this.status);
         return this;
     }
     //refresh fields after display or edit
@@ -30,21 +28,16 @@ export default class Taskmanager extends Task{
         localStorage.setItem("tasks",JSON.stringify(allData));
     }
     //show the tasks if it in the local storage in the webpage
-    showTasks(){
+    displayTask(){
         if(localStorage.getItem("tasks")){
             JSON.parse(localStorage.getItem("tasks")).forEach((item)=>{
-                console.log(item);
-                this.showHtml(item.id,item.name,item.details,item.assignee,item.dueDate,item.status);
-                console.log("going to display");
-                console.log(item.id);
+                this.displayHtml(item.id,item.name,item.details,item.assignee,item.dueDate,item.status);
             });
         }
     }
     //display in the webpage
-    showHtml(id,name,details,assignee,dueDate,status){
+    displayHtml(id,name,details,assignee,dueDate,status){
         //card display
-        console.log("starting to display");
-        console.log(id);
         const taskRow=document.createElement("col");
         taskRow.innerHTML=`
         <div class="card mt-4 mr-4" style="width:18rem;">
@@ -65,15 +58,13 @@ export default class Taskmanager extends Task{
     }
     //pass the id from the call function while submitting the update and check for id in the local storage and the editing id and store it in the local storage. if no checking it will append
     updateTask(id){
-        console.log("hello");
         const newItem={id:this.id,name:this.name,details:this.details,assignee:this.assignee,dueDate:this.dueDate,status:this.status};
-        console.log(newItem);
-        const updatedData=JSON.parse(localStorage.getItem("tasks")).map((item)=>{
+        const taskStorage=JSON.parse(localStorage.getItem("tasks"));
+        const updatedData=taskStorage.map((item)=>{
             if(item.id == id){ 
                 return newItem;}
             return item;
         });
-        console.log(updatedData);
         localStorage.setItem("tasks",JSON.stringify(updatedData));
         window.location.reload();
     }
@@ -89,10 +80,8 @@ export default class Taskmanager extends Task{
         if(emps!=[]){
             document.querySelector("#example").innerHTML="";
             let newData=emps.filter(item=>item.status==status);
-            console.log(newData);
             newData.forEach((item)=>{
-                this.showData(item.id,item.name,item.details,item.assignee,item.dueDate,item.status); 
-                console.log(item.id);
+                this.addTask(item.id,item.name,item.details,item.assignee,item.dueDate,item.status); 
             });
         }
     }
