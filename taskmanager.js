@@ -66,7 +66,7 @@ export default class Taskmanager extends Task{
             return item;
         });
         localStorage.setItem("tasks",JSON.stringify(updatedData));
-        window.location.reload();
+        // this.refresh();
     }
     //delete from the localstorage
     deleteTask(id){
@@ -84,6 +84,9 @@ export default class Taskmanager extends Task{
                 this.addTask(item.id,item.name,item.details,item.assignee,item.dueDate,item.status); 
             });
         }
+    }
+    refresh(){
+        window.location.reload();   
     }
 }
 

@@ -92,6 +92,7 @@ submit.addEventListener("click",(e)=>{
         const id=contIdEdit.value;
         newTask.addTask(id,name.value,details.value,assignee.value,dueDate.value,status.value);
         newTask.updateTask(id);
+        newTask.refresh();
         submit.innerHTML="Save";
         tableBody.innerHTML="";
         newTask.displayTask();
