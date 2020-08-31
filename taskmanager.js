@@ -1,4 +1,5 @@
 import Task from "./taskclass.js"
+
 export default class Taskmanager extends Task{
     constructor(id,name,details,assignee,dueDate,status){
         super(id,name,details,assignee,dueDate,status);
@@ -18,7 +19,8 @@ export default class Taskmanager extends Task{
     clearFields(){
         document.getElementById("name").value="";
         document.getElementById("details").value="";
-        document.getElementById("dueDate").value="";
+        document.getElementById("dueDate").value=new Date().toISOString().slice(0, 10);;
+        document.getElementById("status").value="To Do";
     }
     //store the tasks in the local storage
     storeTask(){
@@ -85,9 +87,9 @@ export default class Taskmanager extends Task{
             });
         }
     }
-    refresh(){
-        window.location.reload();   
-    }
+    // refresh(){
+    //     window.location.reload();   
+    // }
 }
 
 

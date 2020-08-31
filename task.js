@@ -16,13 +16,22 @@ const errormsg=document.getElementById("errormsg");
 const errorMsg1 = document.querySelector("#errorMsg1");
 const errorMsg2 = document.querySelector("#errorMsg2");
 const errorMsg3 = document.querySelector("#errorMsg3");
+const errorMsg4 = document.querySelector("#errorMsg4");
 const dateElement = document.getElementById("#date");
 const todo=document.querySelector("#todo");
 const progress=document.querySelector("#progress");
 const review=document.querySelector("#review");
 const done=document.querySelector("#done");
+const overdue=document.querySelector("#overdue");
 const allDisplay=document.querySelector("#alldisplay");
-
+const formCancel=document.querySelector("#formCancel");
+let d=new Date();
+let today=[
+    d.getFullYear(),
+    ('0' + (d.getMonth() + 1)).slice(-2),
+    ('0' + d.getDate()).slice(-2)
+  ].join('-');
+dueDate.value=today;
 // const options = {weekday : "long", month:"short", day:"numeric"};
 // const today = new Date();
 // dateElement.innerHTML = today.toLocaleDateString("en-US", options);
@@ -37,45 +46,64 @@ newTask.displayTask();
 
 name.addEventListener("input", function(event) {
     event.preventDefault();
-    if (event.target.value && event.target.value.length <= 8) {
+    if (event.target.value && event.target.value.length <= 8 || event.target.value.length ==0) {
       errorMsg1.innerHTML = "Mandatory must enter 8 characters of length";
       errorMsg1.style.color = "red";
       name.focus();
+      submit.disabled=true;
     } else {
         errorMsg1.innerHTML = "Looks Good!";
         errorMsg1.style.color = "purple";
+        submit.disabled=false;
     }
   });
   details.addEventListener("input", function(event) {
     event.preventDefault();
-    if (event.target.value && event.target.value.length <= 15) {
+    if (event.target.value && event.target.value.length <= 15 || event.target.value.length ==0) {
       errorMsg2.innerHTML = "Mandatory must enter 15 characters of length";
       errorMsg2.style.color = "red";
       details.focus();
-      
+      submit.disabled=true;
     } else {
         errorMsg2.innerHTML = "Looks Good!";
         errorMsg2.style.color = "purple";
+        submit.disabled=false;        
     }
   });
   dueDate.addEventListener("change", function(event) {
     event.preventDefault();
-    if (event.target.value == 0) {
-      errorMsg3.innerHTML = "Please select a valid date."
-      errorMsg3.style.color = "red";
-      dueDate.focus();
-    } else {
-        errorMsg3.innerHTML = "Looks Good!";
-        errorMsg3.style.color = "green";
-    }
+    errorMsg3.innerHTML = "Looks Good!";
+    errorMsg3.style.color = "green";
+    dueDate.focus();
+    statusValue();
+  });
+  function statusValue(){
+    if(dueDate.value<today){
+        errorMsg4.innerHTML = "Status changed to overdue";
+        errorMsg4.style.color = "green";
+        status.value="overdue";
+      }
+      else{
+          errorMsg4.innerHTML="";
+          status.value="To Do";
+      }
+  }
+  status.addEventListener("change",function(event){
+    statusValue();
   });
 
   function clearError() {
     errorMsg1.innerHTML = "";
     errorMsg2.innerHTML = "";
     errorMsg3.innerHTML = "";
+    errorMsg4.innerHTML = "";
   }
-// window.load=function(){
+
+formCancel.addEventListener("click",(e)=>{
+    e.preventDefault();
+    newTask.clearFields();
+    clearError();
+});
 submit.addEventListener("click",(e)=>{
     e.preventDefault();
     //update id checking if new id display it in the new row
@@ -92,11 +120,13 @@ submit.addEventListener("click",(e)=>{
         const id=contIdEdit.value;
         newTask.addTask(id,name.value,details.value,assignee.value,dueDate.value,status.value);
         newTask.updateTask(id);
-        newTask.refresh();
+        contIdEdit.value="";
+        // newTask.refresh();
         submit.innerHTML="Save";
         tableBody.innerHTML="";
         newTask.displayTask();
         newTask.clearFields();
+        clearError();
     }
 });
 
@@ -114,6 +144,7 @@ tableBody.addEventListener("click",(e)=>{
         let items=JSON.parse(localStorage.getItem("tasks"));
         let newItem=items.find(item=>item.id==id);
         modalName.innerHTML="Update task";
+        modalName.disabled=true;
         $("#formTask").modal("show");
         name.value=newItem.name;
         details.value=newItem.details;
@@ -146,4 +177,7 @@ done.addEventListener("click",(e)=>{
     e.preventDefault();
     newTask.displayFilter("Done");
 });
-// }
+overdue.addEventListener("click",(e)=>{
+    e.preventDefault();
+    newTask.displayFilter("overdue");
+});
