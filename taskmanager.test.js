@@ -29,8 +29,7 @@ test("HTML element to page ", () => {
     let tableBody = document.querySelector("#example");
     const card = new TaskManager(tableBody);
     card.addTask("1", "Project", "Project Completion", "Lakshman", "28/08/2020", "To Do");
-    card.displayHtml("1", "Project", "Project Completion", "Lakshman", "28/08/2020", "To Do");
-    expect(tableBody.innerHTML).toContain("<col><col>");
+    expect(tableBody.innerHTML).toContain("<col>");
 });
 // delete task
 test("Task deletion", () => {
