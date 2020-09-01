@@ -75,21 +75,6 @@ name.addEventListener("input", function(event) {
     errorMsg3.innerHTML = "Looks Good!";
     errorMsg3.style.color = "green";
     dueDate.focus();
-    statusValue();
-  });
-  function statusValue(){
-    if(dueDate.value<today){
-        errorMsg4.innerHTML = "Status changed to overdue";
-        errorMsg4.style.color = "green";
-        status.value="overdue";
-      }
-      else{
-          errorMsg4.innerHTML="";
-          status.value="To Do";
-      }
-  }
-  status.addEventListener("change",function(event){
-    statusValue();
   });
 
   function clearError() {
