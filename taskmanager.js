@@ -51,8 +51,8 @@ export default class Taskmanager extends Task{
             <p class="card-text"><strong>Assigned to:</strong> ${assignee}</p>
             <p class="card-text"><strong>Status:</strong> ${status}</p>
             <hr>
-            <button id="edit" class="btn btn-info edit mx-4" data-id="${id}">Edit</button>
-            <button id="delete" class="btn btn-danger delete" data-id="${id}">Delete</button>
+            <button id="edit" class="btn btn-info edit mx-4 far fa-edit" data-id="${id}"></button>
+            <button id="delete" class="btn btn-danger delete fas fa-trash-alt" data-id="${id}"></button>
             </div> 
             </div>
       </div>`
