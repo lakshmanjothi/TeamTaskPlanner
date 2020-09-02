@@ -42,6 +42,7 @@ export default class Taskmanager extends Task{
         //card display
         let d=new Date();
         let bgclass="";
+        let bhclass="";
         let today=[
                     d.getFullYear(),
                     ('0' + (d.getMonth() + 1)).slice(-2),
@@ -49,13 +50,15 @@ export default class Taskmanager extends Task{
                 ].join('-');
         if(dueDate<today){
             bgclass="border-danger";
+            bhclass="bg-danger"
         }else{
             bgclass="border-info";
+            bhclass="bg-info"
         }
         const taskRow=document.createElement("col");
         taskRow.innerHTML=`
         <div class="card ${bgclass} mt-4 mr-4 mb-3" style="width:20rem;">
-        <div class="card-header bg-info text-white">Due Date: ${dueDate}</div>
+        <div class="card-header ${bhclass} text-white">Due Date: ${dueDate}</div>
             <div class="card-body">
             <h5 class="card-title">${name}</h5>
             <p class="card-text text-wrap">Description:</p>
