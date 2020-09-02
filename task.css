@@ -1,0 +1,10 @@
+.modal-backdrop{
+    background-image: url("images/timing-project2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+  }
+  .modal-backdrop.show {
+      opacity: 0.8;
+  }
