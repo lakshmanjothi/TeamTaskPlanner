@@ -42,16 +42,16 @@ export default class Taskmanager extends Task{
         //card display
         const taskRow=document.createElement("col");
         taskRow.innerHTML=`
-        <div class="card mt-4 mr-4" style="width:20rem;">
+        <div class="card border-info mt-4 mr-4 mb-3" style="width:20rem;">
         <div class="card-header bg-info text-white">Due Date: ${dueDate}</div>
             <div class="card-body">
             <h5 class="card-title">${name}</h5>
             <p class="card-text text-wrap">Description:</p>
             <p>${details}</p>
-            <hr>
+            <div class="dropdown-divider border-info"></div>
             <p class="card-text"><strong>Assigned to:</strong> ${assignee}</p>
             <p class="card-text"><strong>Status:</strong> ${status}</p>
-            <hr>
+            <div class="dropdown-divider border-info mb-3"></div>
             <button id="edit" class="btn btn-info edit mx-5 far fa-edit" data-id="${id}"></button>
             <button id="delete" class="btn btn-danger delete fas fa-trash-alt" data-id="${id}"></button>
             </div> 
@@ -87,6 +87,31 @@ export default class Taskmanager extends Task{
                 this.addTask(item.id,item.name,item.details,item.assignee,item.dueDate,item.status); 
             });
         }
+    }
+    //display as per date
+    displayDateStatus(displayDate){
+        console.log(displayDate);
+        let emps=JSON.parse(localStorage.getItem("tasks"));
+        if(emps!=[]){
+            document.querySelector("#example").innerHTML="";
+            let newData=emps.filter(item=>item.dueDate==displayDate);
+            newData.forEach((item)=>{
+                this.addTask(item.id,item.name,item.details,item.assignee,item.dueDate,item.status); 
+            });
+        }
+    }
+    //count as per status
+    count(status){
+        let emps=JSON.parse(localStorage.getItem("tasks"));
+        let count=0;
+        if(emps!=[]){
+            document.querySelector("#example").innerHTML="";
+            let newData=emps.filter(item=>item.status==status);
+            newData.forEach((item)=>{
+                 count++;
+            });
+        }
+        return count;
     }
     // refresh(){
     //     window.location.reload();   
