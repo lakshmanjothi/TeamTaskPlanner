@@ -104,6 +104,7 @@ submit.addEventListener("click",(e)=>{
             newTask.storeTask();
             newTask.clearFields();
             clearError();
+            display();
     // }
     }
     //else call the update function and append the item in the html and local storage
@@ -130,6 +131,7 @@ tableBody.addEventListener("click",(e)=>{
         let id=e.target.getAttribute("data-id");
         newTask.deleteTask(id);
         e.target.parentElement.parentElement.parentElement.remove();
+        display();
     }
 
     else if(e.target.classList.contains("edit")){
