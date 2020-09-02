@@ -24,10 +24,18 @@
             <li class="nav-item">
               <div id="date" class="text-white mt-2 mr-4"></div> 
             </li>
-            <li class="nav-item mr-4">
+            <!-- <li class="nav-item mr-4">
               <input type="date" class="form-control" id="displayDate"/>
+          </li> -->
+          <li class="nav-item dropdown mr-4 mb-2">
+            <a class=" btn btn-light dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Date
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <input type="date" class="form-control" id="displayDate"/>
+            </div>
           </li>
-            <li class="nav-item dropdown mr-4">
+            <li class="nav-item dropdown mr-4 mb-2">
               <a class=" btn btn-light dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Status
               </a>
@@ -40,7 +48,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn bg-white text-dark m-1" data-toggle="modal" data-target="#formTask">Add Task</button>
+              <button type="button" class="btn bg-white text-dark" data-toggle="modal" data-target="#formTask">Add Task</button>
             </li>
           </ul>
         </div>
@@ -106,10 +114,10 @@
     <!-- number of tasks -->
     <div class="container mt-4">
       <div class="row border-bottom border-primary">
-        <div class="col-3"><h5 id="countTodo">col-4</h5></div>
-        <div class="col-3"><h5 id="countProgress">col-4</h5></div>
-        <div class="col-3"><h5 id="countReview">col-4</h5></div>
-        <div class="col-3"><h5 id="countDone">col-4</h5></div>
+        <div class="col"><h6 id="countTodo">col-4</h6></div> 
+        <div class="col"><h6 id="countProgress">col-4</h6></div>
+        <div class="col"><h6 id="countReview">col-4</h6></div>
+        <div class="col"><h6 id="countDone">col-4</h6></div>
       </div> 
     </div>
       <!-- card display -->
