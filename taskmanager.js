@@ -46,7 +46,8 @@ export default class Taskmanager extends Task{
         <div class="card-header bg-info text-white">Due Date: ${dueDate}</div>
             <div class="card-body">
             <h5 class="card-title">${name}</h5>
-            <p class="card-text text-wrap">Description: ${details}</p>
+            <p class="card-text text-wrap">Description:</p>
+            <p>${details}</p>
             <hr>
             <p class="card-text"><strong>Assigned to:</strong> ${assignee}</p>
             <p class="card-text"><strong>Status:</strong> ${status}</p>
