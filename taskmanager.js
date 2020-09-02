@@ -17,9 +17,15 @@ export default class Taskmanager extends Task{
     }
     //refresh fields after display or edit
     clearFields(){
+        let d=new Date();
+        let today=[
+            d.getFullYear(),
+            ('0' + (d.getMonth() + 1)).slice(-2),
+            ('0' + d.getDate()).slice(-2)
+        ].join('-');
         document.getElementById("name").value="";
         document.getElementById("details").value="";
-        document.getElementById("dueDate").value=new Date().toISOString().slice(0, 10);;
+        document.getElementById("dueDate").value=today;
         document.getElementById("status").value="To Do";
     }
     //store the tasks in the local storage

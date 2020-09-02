@@ -24,6 +24,7 @@ const done=document.querySelector("#done");
 const displayDate=document.querySelector("#displayDate");
 const allDisplay=document.querySelector("#alldisplay");
 const formCancel=document.querySelector("#formCancel");
+const formCancel1=document.querySelector("#formCancel1");
 const countTodo=document.querySelector("#countTodo");
 const countProgress=document.querySelector("#countProgress");
 const countReview=document.querySelector("#countReview");
@@ -89,6 +90,13 @@ name.addEventListener("input", function(event) {
   }
 
 formCancel.addEventListener("click",(e)=>{
+    e.preventDefault();
+    modalName.innerHTML="Add task";
+    submit.innerHTML="Save";
+    newTask.clearFields();
+    clearError();
+});
+formCancel1.addEventListener("click",(e)=>{
     e.preventDefault();
     modalName.innerHTML="Add task";
     submit.innerHTML="Save";
