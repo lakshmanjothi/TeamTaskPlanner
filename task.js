@@ -86,6 +86,9 @@ name.addEventListener("input", function(event) {
 
 formCancel.addEventListener("click",(e)=>{
     e.preventDefault();
+    modalName.innerHTML="Add task";
+    console.log(modalName.innerHTML);
+    submit.innerHTML="Save";
     newTask.clearFields();
     clearError();
 });
@@ -108,6 +111,7 @@ submit.addEventListener("click",(e)=>{
         contIdEdit.value="";
         // newTask.refresh();
         modalName.innerHTML="Add task";
+        console.log(modalName.innerHTML);
         submit.innerHTML="Save";
         tableBody.innerHTML="";
         newTask.displayTask();
