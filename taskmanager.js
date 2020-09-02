@@ -42,7 +42,7 @@ export default class Taskmanager extends Task{
         //card display
         const taskRow=document.createElement("col");
         taskRow.innerHTML=`
-        <div class="card mt-4 mr-4" style="width:18rem;">
+        <div class="card mt-4 mr-4" style="width:20rem;">
         <div class="card-header bg-info text-white">Due Date: ${dueDate}</div>
             <div class="card-body">
             <h5 class="card-title">${name}</h5>

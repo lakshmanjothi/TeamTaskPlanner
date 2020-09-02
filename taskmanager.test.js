@@ -29,6 +29,7 @@ test("HTML element to page ", () => {
     let tableBody = document.querySelector("#example");
     const card = new TaskManager(tableBody);
     card.addTask("1", "Project", "Project Completion", "Lakshman", "28/08/2020", "To Do");
+    card.storeTask();
     expect(tableBody.innerHTML).toContain("<col>");
 });
 // delete task
@@ -49,5 +50,13 @@ test("Task update", () => {
     newTask.updateTask("1");
     newTask.storeTask();
     expect(actual).toMatchObject(expected);
+});
+test("HTML element to page ", () => {
+    let tableBody = document.querySelector("#example");
+    const card = new TaskManager(tableBody);
+    card.addTask("1", "Project", "Project Completion", "Lakshman", "28/08/2020", "To Do");
+    card.storeTask();
+    card.deleteTask("1");
+    expect(tableBody.innerHTML).toContain("<col>");
 });
 

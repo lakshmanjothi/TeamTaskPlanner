@@ -17,7 +17,6 @@ const errorMsg1 = document.querySelector("#errorMsg1");
 const errorMsg2 = document.querySelector("#errorMsg2");
 const errorMsg3 = document.querySelector("#errorMsg3");
 const errorMsg4 = document.querySelector("#errorMsg4");
-const dateElement = document.getElementById("#date");
 const todo=document.querySelector("#todo");
 const progress=document.querySelector("#progress");
 const review=document.querySelector("#review");
@@ -32,9 +31,7 @@ let today=[
     ('0' + d.getDate()).slice(-2)
   ].join('-');
 dueDate.value=today;
-// const options = {weekday : "long", month:"short", day:"numeric"};
-// const today = new Date();
-// dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
 //declaration for form, three inpue fields,table display,submit button for store this item and hidden field for id - check for the class and id in the HTML
 
 //console.log used for value verfication

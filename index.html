@@ -14,10 +14,11 @@
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="index.html"><i class="fa fa-tasks fa-1x" aria-hidden="true"></i> Task Planner</a>
-        <div class="collapse navbar-collapse justify-content-end ml-auto" id="nav">         
-          <div id="date" class="text-white m-4"></div>
+        <div class="collapse navbar-collapse justify-content-end ml-auto" id="nav">  
+          <div id="date" class="text-white mr-4"></div>       
+          <!-- <a href="index.html"><button type="button" class="btn bg-white text-dark m-1">Home</button></a> -->
           <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-light dropdown-toggle mr-4" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Status
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -97,9 +98,23 @@
 
         </div>
     </div>
+    <footer class="bg-primary fixed-bottom">
+      <div class="container">
+          <div class="row">
+              <div class="col text-center">
+                  <p class="text-light text-center py-2 m-0">Task Planner   &copy;Copyright 2020 - From Kirija & Lakshman</p>
+                </div>
+          </div>
+      </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+      const options = {weekday : "long", month:"short", day:"numeric"};
+      const todayDate = new Date();
+      document.getElementById("date").innerHTML = todayDate.toLocaleDateString("en-US", options);   
+    </script>
     <script src="task.js"></script>
 </body>
 
