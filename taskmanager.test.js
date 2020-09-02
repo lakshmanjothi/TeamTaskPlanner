@@ -25,7 +25,7 @@ test("Task Add", () => {
     expect(newTask.status).toBe("To Do");
 });
 
-test("HTML element to page ", () => {
+test("add HTML element to page ", () => {
     let tableBody = document.querySelector("#example");
     const card = new TaskManager(tableBody);
     card.addTask("1", "Project", "Project Completion", "Lakshman", "28/08/2020", "To Do");
@@ -51,7 +51,7 @@ test("Task update", () => {
     newTask.storeTask();
     expect(actual).toMatchObject(expected);
 });
-test("HTML element to page ", () => {
+test("delete HTML element to page ", () => {
     let tableBody = document.querySelector("#example");
     const card = new TaskManager(tableBody);
     card.addTask("1", "Project", "Project Completion", "Lakshman", "28/08/2020", "To Do");
