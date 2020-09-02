@@ -87,7 +87,6 @@ name.addEventListener("input", function(event) {
 formCancel.addEventListener("click",(e)=>{
     e.preventDefault();
     modalName.innerHTML="Add task";
-    console.log(modalName.innerHTML);
     submit.innerHTML="Save";
     newTask.clearFields();
     clearError();
