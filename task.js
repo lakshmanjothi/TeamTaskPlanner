@@ -107,6 +107,7 @@ submit.addEventListener("click",(e)=>{
         newTask.updateTask(id);
         contIdEdit.value="";
         // newTask.refresh();
+        modalName.innerHTML="Add task";
         submit.innerHTML="Save";
         tableBody.innerHTML="";
         newTask.displayTask();
