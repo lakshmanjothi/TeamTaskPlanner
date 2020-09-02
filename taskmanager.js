@@ -40,9 +40,21 @@ export default class Taskmanager extends Task{
     //display in the webpage
     displayHtml(id,name,details,assignee,dueDate,status){
         //card display
+        let d=new Date();
+        let bgclass="";
+        let today=[
+                    d.getFullYear(),
+                    ('0' + (d.getMonth() + 1)).slice(-2),
+                    ('0' + d.getDate()).slice(-2)
+                ].join('-');
+        if(dueDate<today){
+            bgclass="border-danger";
+        }else{
+            bgclass="border-info";
+        }
         const taskRow=document.createElement("col");
         taskRow.innerHTML=`
-        <div class="card border-info mt-4 mr-4 mb-3" style="width:20rem;">
+        <div class="card ${bgclass} mt-4 mr-4 mb-3" style="width:20rem;">
         <div class="card-header bg-info text-white">Due Date: ${dueDate}</div>
             <div class="card-body">
             <h5 class="card-title">${name}</h5>
